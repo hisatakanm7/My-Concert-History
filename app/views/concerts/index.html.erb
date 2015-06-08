@@ -1,0 +1,40 @@
+<table>
+<thead>
+<tr><th>Year</th><th>Titler</th><th>Action</th></tr>
+</thead>
+<% array = [] %>
+
+	<% @concerts.each do |concert| %>
+	<tbody>
+	<tr>
+		
+		<td>
+		<%= 
+		unless array.include?(concert.year) then
+		
+		array << concert.year 
+		 concert.year
+		
+		
+		end
+		%>
+		</td>
+		<td>
+		<%= link_to concert.title,concert_path(concert.id) %>
+		</td>
+		<td>
+		<%= link_to "[Edit]", edit_concert_path(concert.id) %>
+		<%= link_to "[Delete]", concert_path(concert.id), method: :delete, data:{confirm:"are you sure?"}%>
+		</td>
+		</tr>
+</tbody>
+		<% end %>
+	
+</table>
+
+<p><%= link_to "Add New" , new_concert_path %></p>
+
+
+
+
+

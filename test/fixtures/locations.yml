@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  monthday: MyString
+  prefecture: MyString
+  place: MyString
+  concert_id: 
+
+two:
+  monthday: MyString
+  prefecture: MyString
+  place: MyString
+  concert_id: 

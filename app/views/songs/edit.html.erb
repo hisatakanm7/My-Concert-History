@@ -1,0 +1,25 @@
+<p>Edit</p>
+
+
+<%= form_for @song,:url => {:controller => 'songs', :action => 'update'} do |f| %>
+<p>
+<%= f.label :title %><br>
+<%= f.text_field :title %>
+</p>
+<p>
+<%= f.label :cd %><br>
+<%= f.text_field :cd %>
+        </p>
+        
+        <p>
+<%= f.label :cd2 %><br>
+<%= f.text_field :cd2 %>
+        </p>
+        
+          <p>
+<%= f.label :cd3 %><br>
+<%= f.text_field :cd3 %>
+        </p>
+        
+        <p><%= f.submit %></p>
+<% end %>
