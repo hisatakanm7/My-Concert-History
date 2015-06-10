@@ -1,5 +1,7 @@
 class LocationsController < ApplicationController
     
+    before_action :set_location, only:[:edit, :update, :destroy]
+    
     def create
         @concert = Concert.find(params[:concert_id])
         @location = @concert.locations.create(location_params)
@@ -7,17 +9,14 @@ class LocationsController < ApplicationController
     end
     
     def destroy
-        @location = Location.find(params[:id])
         @location.destroy
         redirect_to concert_path(params[:concert_id])
     end
     
     def edit
-        @location = Location.find(params[:id])
     end
     
     def update
-        @location = Location.find(params[:id])
         if @location.update(location_params)
             redirect_to concert_path(params[:concert_id])
             else
@@ -30,5 +29,9 @@ class LocationsController < ApplicationController
     
         def location_params
             params[:location].permit(:month, :day, :prefecture, :place)
+        end
+        
+        def set_location
+            @location = Location.find(params[:id])
         end
 end

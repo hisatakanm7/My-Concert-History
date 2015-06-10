@@ -1,6 +1,7 @@
 class Concert < ActiveRecord::Base
     has_many :locations
     has_many :songs
+    validates :title, presence: true
     
-    accepts_nested_attributes_for :songs
+    
 end

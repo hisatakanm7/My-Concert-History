@@ -16,8 +16,12 @@ class ConcertsController < ApplicationController
     
     def create
         @concert = Concert.new(concert_params)
-        @concert.save
+        if @concert.save
         redirect_to concerts_path
+        else
+        render 'new'
+        end
+        
     end
     
     def edit

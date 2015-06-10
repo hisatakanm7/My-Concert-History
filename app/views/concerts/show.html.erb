@@ -1,62 +1,46 @@
 <h1><%= @concert.title %></h1>
 
 <table>
+<thead>
+<tr><th>Number</th><th>Month</th><th>Day</th><th>Location</th><th>Action</th></tr>
+</thead>
 <% y = 0 %>
-	<tbody>
+<tbody>
 	<% @concert.locations.each do |location| y += 1 %>
-		<tr>
-		        <td>
-		        <%= y %>
-		        </td>
-			<td>
-			<%= location.month %>/
-			</td>
-			<td>
-			<%= location.day %>
-			</td>
-			<td>
-			<%= location.prefecture %>
-			</td>
-			<td>
-			<%= location.place %>
-			</td>
-			<td>
-			<%= link_to "[Delete]", concert_location_path(location.concert_id, location.id),method: :delete, data: {confirm: "are you sure?" } %>
-			<%= link_to "[Edit]", edit_concert_location_path(location.concert_id, location.id)%>
-			</td>
-		</tr>
+	<tr>
+	        <td><%= y %></td>
+		<td><%= location.month %>/</td>
+		<td><%= location.day %></td>
+		<td><%= location.prefecture %></td>
+		<td><%= location.place %></td>
+		<td><%= link_to "[Delete]", concert_location_path(location.concert_id, location.id),method: :delete, data: {confirm: "are you sure?" } %>
+			<%= link_to "[Edit]", edit_concert_location_path(location.concert_id, location.id)%></td>
+	</tr>
 	<% end %>
-	</tbody>
+</tbody>
 </table>
+
+
 
 <%= form_for [@concert, @concert.locations.build] do |f| %>
 <table>
-<tbody>
-
-<tr>
-<td id ="label">
-<%= f.label :月： %>
-</td>
-<td>
-<%= f.text_field :month %>
-</td>
-</tr>
-<tr>
-<td id ="label">
-<%= f.label :日： %>
-</td>
-<td>
-<%= f.text_field :day %>
-</td>
-</tr>
-<tr>
-<td id ="label"><%= f.label :都道府県： %>
-</td>
-<td>
-<%= f.text_field :prefecture %></td></tr>
-<tr><td id ="label"><%= f.label :会場： %></td><td>
-<%= f.text_field :place %></td></tr>
-
+<tbody id = "createform">
+	<tr>
+		<td id ="label"><%= f.label :月： %></td>
+		<td><%= f.text_field :month %></td>
+	</tr>
+	<tr>
+		<td id ="label"><%= f.label :日： %></td>
+		<td><%= f.text_field :day %></td>
+	</tr>
+	<tr>
+		<td id ="label"><%= f.label :都道府県： %></td>
+		<td><%= f.text_field :prefecture %></td>
+	</tr>
+	<tr>
+		<td id ="label"><%= f.label :会場： %></td>
+		<td><%= f.text_field :place %></td>
+	</tr>
 </tbody>
 </table>
 <%= f.submit %>
@@ -67,31 +51,21 @@
 
 <table>
 <% y = 0 %>
+<thead>
+	<tr><th>Number</th><th>Song</th><th>CD</th><th>CD2</th><th>CD3</th><th>Action</th></tr>
+</thead>
 <tbody>
-<% @concert.songs.each do |song| y+=1 %>
-<tr>
-<td>
-<%= y %>
-</td>
-<td>
-<%= song.title %>
-</td>
-<td>
-<%= song.cd %>
-</td>
-<td>
-<%= song.cd2 %>
-</td>
-<td>
-<%= song.cd3 %>
-</td>
-
-<td>
-<%= link_to "[Delete]", song_path(song.id),method: :delete, data: {confirm: "are you sure?" } %>
-<%= link_to "[Edit]", edit_song_path(song.id)%>
-</td>
-</tr>
-<% end %>
+	<% @concert.songs.each do |song| y+=1 %>
+	<tr>
+		<td><%= y %></td>
+		<td><%= song.title %></td>
+		<td><%= song.cd %></td>
+		<td><%= song.cd2 %></td>
+		<td><%= song.cd3 %></td>
+		<td><%= link_to "[Delete]", song_path(song.id),method: :delete, data: {confirm: "are you sure?" } %>
+		<%= link_to "[Edit]", edit_song_path(song.id)%></td>
+	</tr>
+	<% end %>
 </tbody>
 </table>
 
@@ -99,24 +73,23 @@
 
 <%= form_for [@concert, @concert.songs.build] do |f| %>
 <table>
-<tbody>
-<tr>
-	<td id = "label"><%= f.label :曲名： %></td>
-	<td><%= f.text_field :title %></td>
-</tr>
-<tr>
-	<td id = "label"><%= f.label :Album： %></td>
-	<td><%= f.text_field :cd %></td>
-</tr>
-<tr>
-	<td id = "label"><%= f.label :Album2： %></td>
-	<td><%= f.text_field :cd2 %></td>
-</tr>
-<tr>
-	<td id = "label"><%= f.label :Album3： %></td>
-	<td><%= f.text_field :cd3 %>
-</td>
-</tr>
+<tbody id = "createform">
+	<tr>
+		<td id = "label"><%= f.label :曲名： %></td>
+		<td><%= f.text_field :title %></td>
+	</tr>
+	<tr>
+		<td id = "label"><%= f.label :Album： %></td>
+		<td><%= f.text_field :cd %></td>
+	</tr>
+	<tr>
+		<td id = "label"><%= f.label :Album2： %></td>
+		<td><%= f.text_field :cd2 %></td>
+	</tr>
+	<tr>
+		<td id = "label"><%= f.label :Album3： %></td>
+		<td><%= f.text_field :cd3 %></td>
+	</tr>
 </tbody>
 </table>
 <%= f.submit %>
